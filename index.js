@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 require("dotenv").config();
 
 const app = express();
-const port = 1000;
+const port = 2000;
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.post("/getJoke", async (req, res) => {
   const input = req.body.joke;
+  console.log(input);
   // Use the OpenAI API to generate a joke based on the keyword
   try {
     const response = await openai.createChatCompletion({
