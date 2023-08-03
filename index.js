@@ -12,6 +12,10 @@ const openai = new OpenAIApi(configuration);
 app.use(express.json());
 app.use(require("cors")());
 
+app.get("/", (req, res) => {
+  res.send("Welcome!");
+});
+
 app.post("/getJoke", async (req, res) => {
   const { keyword } = req.body.joke;
 
