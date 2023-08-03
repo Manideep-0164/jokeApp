@@ -18,7 +18,6 @@ app.get("/", (req, res) => {
 
 app.post("/getJoke", async (req, res) => {
   const input = req.body.joke;
-  console.log(input);
   // Use the OpenAI API to generate a joke based on the keyword
   try {
     const response = await openai.createChatCompletion({
