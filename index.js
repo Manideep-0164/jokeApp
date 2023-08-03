@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/getJoke", async (req, res) => {
-  const { keyword } = req.body.joke;
+  const input = req.body.joke;
 
   // Use the OpenAI API to generate a joke based on the keyword
   try {
@@ -28,12 +28,11 @@ app.post("/getJoke", async (req, res) => {
           role: "system",
           content: `You are a helpful assistant that makes jokes.`,
         },
-        { role: "user", content: `Tell me a joke about ${keyword}` },
+        { role: "user", content: `Tell me a joke about ${input}` },
       ],
     });
 
     const joke = response.data.choices[0].message.content.trim();
-    // console.log(joke);
     res.json({ joke });
   } catch (error) {
     console.error("Error generating joke:", error);
