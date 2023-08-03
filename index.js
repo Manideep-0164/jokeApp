@@ -33,7 +33,7 @@ app.post("/getJoke", async (req, res) => {
     });
 
     const joke = response.data.choices[0].message.content.trim();
-    res.json({ joke });
+    res.json({ joke, input });
   } catch (error) {
     console.error("Error generating joke:", error);
     res
